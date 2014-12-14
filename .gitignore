@@ -1,3 +1,11 @@
+# CMake generated files
+*.appinfo.h
+bin/
+build/
+
+# OS X trash
+.DS_Store
+
 # Compiled Object files
 *.slo
 *.lo
