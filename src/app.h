@@ -25,11 +25,6 @@ public:
   int getProjectPatchVersion() const;
   string getProjectVersion() const;
   string getProjectCopyrightYears() const;
-
-private:
-  void printVersionMessage() const;
-  void printVersionTripletMessage() const;
-  void printApplicationIdentifier() const;
 };
 
 #endif

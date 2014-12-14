@@ -8,3 +8,4 @@ Creating a (large scaling) C++ project from scratch can be cumbersome. The purpo
  * Googletest C++ Testing which has no external dependencies and builds inside the project
 
 Some parts of this bootstrap project template are inspired by https://code.google.com/p/cpp-project-template/.
+Adjusted CodeCoverage from to ignore thirdparty directory

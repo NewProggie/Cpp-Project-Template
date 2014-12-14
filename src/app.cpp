@@ -41,17 +41,3 @@ string App::getProjectCopyrightYears() const {
     return APPLICATION_COPYRIGHT_YEARS;
 }
 
-void App::printVersionMessage() const {
-    cout << getProjectName() << " v" << getProjectVersion() << endl;
-    cout << getProjectVendorName() << "; Copyright (C) "
-         << getProjectCopyrightYears() << endl;
-}
-
-void App::printVersionTripletMessage() const {
-    cout << getProjectVersion() << endl;
-}
-
-void App::printApplicationIdentifier() const {
-    cout << getProjectID() << endl;
-}
-
