@@ -31,8 +31,11 @@ LIST(APPEND CMAKE_PREFIX_PATH "${MAINFOLDER}/thirdparty")
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${MAINFOLDER}/tools/share/cmake")
 INCLUDE_DIRECTORIES("${MAINFOLDER}/include")
 
-## Add Code Coverage Target
-INCLUDE(CodeCoverage)
+## Add Code Coverage Target for Supported Compilers
+IF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
+   "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	INCLUDE(CodeCoverage)
+ENDIF()
 
 ## Project Dependencies
 

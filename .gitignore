@@ -1,5 +1,5 @@
 # CMake generated files
-*.appinfo.h
+*appinfo.h
 bin/
 build/
 
