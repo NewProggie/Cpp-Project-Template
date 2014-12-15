@@ -1,0 +1,16 @@
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq build-essential cmake git-core lcov ggcov
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake ..
+
+script: make
+

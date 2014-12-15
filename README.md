@@ -7,6 +7,7 @@ Creating a (large scaling) C++ project from scratch can be cumbersome. The purpo
  * Googletest C++ Testing which has no external dependencies and builds inside the project
  * LCOV Code Coverage Report using `-fprofile-arcs` and `-ftest-coverage` compiler features
  * Doxygen code documentation generation
+ * Travis configuration for CI in case one doesn't want to use Jenkins CI
  * TODO: Extra branch with optional Qt4 dependency
  * TODO: Vagrant Box with Jenkins CI
 
