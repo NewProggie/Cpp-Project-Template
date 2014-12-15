@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/NewProggie/Cpp-Project-Template.svg?branch=master)](https://travis-ci.org/NewProggie/Cpp-Project-Template)
-
 Cpp-Project-Template
 ====================
 
@@ -12,6 +11,8 @@ Creating a (large scaling) C++ project from scratch can be cumbersome. The purpo
  * Travis configuration for CI in case one doesn't want to use Jenkins CI
  * TODO: Extra branch with optional Qt4 dependency
  * TODO: Vagrant Box with Jenkins CI
+ 
+ ![Logo](src/doc/screenshot-make.png)
 
 ## Acknowledgments
 
