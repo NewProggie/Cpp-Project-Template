@@ -2,6 +2,7 @@
 
 JENKINS_UPDATE_URL=http://updates.jenkins-ci.org/latest/
 JENKINS_PLUGINS_PATH=/var/lib/jenkins/plugins/
+JENKINS_JOBS_PATH=/var/lib/jenkins/jobs/
 JENKINS_USER=jenkins.jenkins
 declare -a JENKINS_PLUGINS=("git" "cmakebuilder" "doxygen" "sloccount" "htmlpublisher")
 
@@ -46,3 +47,9 @@ done
 chown ${JENKINS_USER} ${JENKINS_PLUGINS_PATH} -R
 service jenkins restart
 
+# install already configured jenkins job for this project
+mkdir -p ${JENKINS_JOBS_PATH}Project-Name
+wget -O config.xml https://raw.githubusercontent.com/NewProggie/Cpp-Project-Template/master/tools/share/jenkins-config.xml
+mv config.xml ${JENKINS_JOBS_PATH}Project-Name/
+chown ${JENKINS_USER} ${JENKINS_JOBS_PATH} -R
+service jenkins restart
