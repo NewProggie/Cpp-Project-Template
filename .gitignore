@@ -2,6 +2,7 @@
 *appinfo.h
 bin/
 build/
+docs/
 
 # OS X trash
 .DS_Store
