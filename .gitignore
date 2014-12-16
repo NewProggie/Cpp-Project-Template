@@ -4,6 +4,9 @@ bin/
 build/
 docs/
 
+# Vagrant
+.vagrant/
+
 # OS X trash
 .DS_Store
 
