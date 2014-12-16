@@ -1,3 +1,7 @@
+## Use compiler debugging flags per default
+INCLUDE(CxxFlags)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_DEBUG}")
+
 ## Creating Binaries for each *.cxx file
 SET (PROJECT_BIN ${PROJECT_NAME})
 ADD_EXECUTABLE(${PROJECT_BIN} ${MAINFOLDER}/src/main.cxx ${PROJECT_SRCS})

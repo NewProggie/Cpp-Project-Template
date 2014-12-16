@@ -1,12 +1,13 @@
+#include <cstdlib>
 #include <iostream>
 #include "app.h"
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main() {
 
     App app;
     cout << "Hello, " << app.getProjectName() << endl;
 
-    return 0;
+    return EXIT_SUCCESS;
 }
