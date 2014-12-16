@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>20</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.3.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/NewProggie/Cpp-Project-Template.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.cmake.CmakeBuilder plugin="cmakebuilder@1.9">
+      <sourceDir>.</sourceDir>
+      <buildDir>build</buildDir>
+      <installDir></installDir>
+      <buildType>Debug</buildType>
+      <otherBuildType></otherBuildType>
+      <generator>Unix Makefiles</generator>
+      <makeCommand>make</makeCommand>
+      <installCommand>make install</installCommand>
+      <preloadScript></preloadScript>
+      <cmakeArgs></cmakeArgs>
+      <projectCmakePath></projectCmakePath>
+      <cleanBuild>true</cleanBuild>
+      <cleanInstallDir>false</cleanInstallDir>
+      <builderImpl/>
+    </hudson.plugins.cmake.CmakeBuilder>
+    <hudson.tasks.Shell>
+      <command>cd ${WORKSPACE}/build/test
+make projectname-coverage</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>doxygen</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>sloccount --duplicates --wide --details ${WORKSPACE}/src &gt; sloccount.sc</command>
+    </hudson.tasks.Shell>
+    <hudson.tasks.Shell>
+      <command>cd ${WORKSPACE}
+./bin/projectname-unittests --gtest_output=&quot;xml:testresults.xml&quot;</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.sloccount.SloccountPublisher plugin="sloccount@1.20">
+      <pattern>sloccount.sc</pattern>
+      <encoding></encoding>
+      <commentIsCode>false</commentIsCode>
+      <numBuildsInGraph>0</numBuildsInGraph>
+      <ignoreBuildFailure>false</ignoreBuildFailure>
+    </hudson.plugins.sloccount.SloccountPublisher>
+    <hudson.plugins.doxygen.DoxygenArchiver plugin="doxygen@0.16">
+      <doxyfilePath>Doxyfile</doxyfilePath>
+      <keepAll>false</keepAll>
+      <folderWhereYouRunDoxygen></folderWhereYouRunDoxygen>
+    </hudson.plugins.doxygen.DoxygenArchiver>
+    <htmlpublisher.HtmlPublisher plugin="htmlpublisher@1.3">
+      <reportTargets>
+        <htmlpublisher.HtmlPublisherTarget>
+          <reportName>Code Coverage Report</reportName>
+          <reportDir>build/coverage</reportDir>
+          <reportFiles>index.html</reportFiles>
+          <keepAll>true</keepAll>
+          <allowMissing>true</allowMissing>
+          <wrapperName>htmlpublisher-wrapper.html</wrapperName>
+        </htmlpublisher.HtmlPublisherTarget>
+      </reportTargets>
+    </htmlpublisher.HtmlPublisher>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.2-beta-4">
+      <testResults>testresults.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <testDataPublishers/>
+      <healthScaleFactor>1.0</healthScaleFactor>
+    </hudson.tasks.junit.JUnitResultArchiver>
+  </publishers>
+  <buildWrappers/>
+</project>

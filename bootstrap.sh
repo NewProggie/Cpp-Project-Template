@@ -23,7 +23,7 @@ installJenkinsPlugin() {
 wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
 sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 apt-get update
-apt-get install -y build-essential curl unzip git git-core jenkins
+apt-get install --no-install-recommends -y build-essential cmake ggcov lcov curl unzip sloccount git git-core jenkins doxygen ttf-dejavu
 
 # install necessary jenkins plugins
 mkdir -p ${JENKINS_PLUGINS_PATH}
