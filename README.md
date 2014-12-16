@@ -13,6 +13,7 @@ Creating a (large scaling) C++ project from scratch can be cumbersome. The purpo
  * TODO: Vagrant Box with Jenkins CI
  
  ![Logo](src/doc/screenshot-make.png)
+ ![Coverage](src/doc/screenshot-coverage.png)
 
 ## Acknowledgments
 
