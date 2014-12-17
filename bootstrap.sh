@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+PROJECT_NAME=`grep APPLICATION_NAME /vagrant/CMakeLists.txt | cut -d'"' -f2 | tr ' ' '_'`
 JENKINS_UPDATE_URL=http://updates.jenkins-ci.org/latest/
 JENKINS_PLUGINS_PATH=/var/lib/jenkins/plugins/
 JENKINS_JOBS_PATH=/var/lib/jenkins/jobs/
@@ -48,8 +49,7 @@ chown ${JENKINS_USER} ${JENKINS_PLUGINS_PATH} -R
 service jenkins restart
 
 # install already configured jenkins job for this project
-mkdir -p ${JENKINS_JOBS_PATH}Project-Name
-wget -O config.xml https://raw.githubusercontent.com/NewProggie/Cpp-Project-Template/master/tools/share/jenkins-config.xml
-mv config.xml ${JENKINS_JOBS_PATH}Project-Name/
+mkdir -p ${JENKINS_JOBS_PATH}${PROJECT_NAME}
+cp /vagrant/tools/share/jenkins-config.xml ${JENKINS_JOBS_PATH}${PROJECT_NAME}/config.xml
 chown ${JENKINS_USER} ${JENKINS_JOBS_PATH} -R
 service jenkins restart
