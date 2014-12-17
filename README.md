@@ -11,10 +11,10 @@ Creating a (large scaling) C++ project from scratch can be cumbersome. The purpo
  * Preconfigured Jenkins CI, production ready from the start
  * Travis configuration for CI in case one doesn't want to use Jenkins CI
  * Vagrant Box with automagically configured Jenkins CI
- * TODO: Extra branch with optional Qt4 dependency
 
  ![Logo](src/doc/screenshot-make.png)
  ![Jenkins](src/doc/screenshot-jenkins.png)
+ ![Doxygen](src/doc/screenshot-doxygen.png)
  ![Coverage](src/doc/screenshot-coverage.png)
 
 ## Acknowledgments
